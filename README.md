@@ -3,6 +3,13 @@ Genderizer
 
 Genderizer is a language independent module which tries to detect gender by looking at given first names and/or analyzing sample texts. 
 
+***Always remember***:
+
+> Data-driven predictions can succeed --and they can fail. It is when we
+> deny our role in the process that the odds of failure rise. Before we
+> demand more of our  data, we need to demand more of ourselves.
+> -- The Signal and The Noise by Nate Silver
+
 ##Installation
 You can install this package using the following ```pip``` command:
 
