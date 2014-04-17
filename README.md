@@ -14,7 +14,8 @@ $ sudo pip install genderizer
 ##Examples
 
 ```python
-1
+from genderizer.genderizer import Genderizer
+
 print Genderizer.detect(firstName = 'John')
 # >>> male
 
