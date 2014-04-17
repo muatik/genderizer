@@ -1,13 +1,13 @@
-Genderize
+Genderizer
 ======================
 
-Genderize is a language independent module which tries to detect gender by looking given first names and/or analyzing sample texts. 
+Genderizer is a language independent module which tries to detect gender by looking given first names and/or analyzing sample texts. 
 
 ##Installation
 You can install this package using the following ```pip``` command:
 
 ```sh
-$ sudo pip install genderize
+$ sudo pip install genderizer
 ```
 
 
@@ -15,40 +15,40 @@ $ sudo pip install genderize
 
 ```python
 1
-print Genderize.detect(firstName = 'John')
+print Genderizer.detect(firstName = 'John')
 # >>> male
 
-print Genderize.detect(firstName = 'Marry')
+print Genderizer.detect(firstName = 'Marry')
 # >>> female
 
-print Genderize.detect(firstName = 'mustafa')
+print Genderizer.detect(firstName = 'mustafa')
 # >>> male
 
-print Genderize.detect(firstName = 'fatma')
+print Genderizer.detect(firstName = 'fatma')
 # >>> female
 
-print Genderize.detect(firstName = 'fikret')
+print Genderizer.detect(firstName = 'fikret')
 # >>> None
 
-print Genderize.detect(firstName = 'fikret', text='galatasary maçı kaçmaz')
+print Genderizer.detect(firstName = 'fikret', text='galatasary maçı kaçmaz')
 # >>> male
 
-print Genderize.detect(firstName = 'fikret', text='annemlerle yemek yedik')
+print Genderizer.detect(firstName = 'fikret', text='annemlerle yemek yedik')
 # >>> female
 
-print Genderize.detect(text='askerlik yoklamasını kaçırdım mk')
+print Genderizer.detect(text='askerlik yoklamasını kaçırdım mk')
 # >>> male
 
-print Genderize.detect(text='bana çiçek alan erkek için canım feda')
+print Genderizer.detect(text='bana çiçek alan erkek için canım feda')
 # >>> female
 
-print Genderize.detect(firstName='fatma', text='askerlik yoklamasını kaçırdım mk')
+print Genderizer.detect(firstName='fatma', text='askerlik yoklamasını kaçırdım mk')
 # >>> female
 
-print Genderize.detect(text='futbol sevgi')
+print Genderizer.detect(text='futbol sevgi')
 # >>> None
 
-print Genderize.detect(text='lan bi siktir git')
+print Genderizer.detect(text='lan bi siktir git')
 # >>> male
 
 ```
@@ -58,7 +58,7 @@ By the way, in Turkish saying 'lan bi siktir git' makes you quite rude.
 
 
 ## How It Works
-Genderize is a module which tries to detect gender by looking given first names and/or analyzing sample text of a person. 
+Genderizer is a module which tries to detect gender by looking given first names and/or analyzing sample text of a person. 
 
 If a first name is definitely used for only one gender, the system will accept this gender and will not make any further analysis. For example, while 'Mustafa', 'Osman', 'Hasan' is used in Turkish only for male; 'Fatma', 'Ceyda', 'Elif' only for female.
 
@@ -76,24 +76,24 @@ TODO: give a few examples
 TODO: Tell what options are there and when to choose
 ```python
 MongoNamesCollection.mongodbURL = 'mongodb://192.168.1.170'
-Genderize.init(
+Genderizer.init(
     lang='tr',
     namesCollection=MongoNamesCollection
 )
 
 MemcachedNamesCollection.memcacheHost = '127.0.0.1:11211'
-Genderize.init(
+Genderizer.init(
     lang='tr',
     namesCollection=MemcachedNamesCollection
 )
 
-Genderize.init(
+Genderizer.init(
     lang='tr',
     namesCollection=NamesCollection,
     classifier=Classifier(CachedModel.get('tr'), tokenizer)
 )
 
-print Genderize.detect(firstName = 'fikret', text='annem')
+print Genderizer.detect(firstName = 'fikret', text='annem')
 
 ```
 

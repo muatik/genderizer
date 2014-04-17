@@ -1,6 +1,6 @@
 import memcache
 import cPickle
-
+import os
 
 class CachedModel(object):
     """
@@ -29,7 +29,9 @@ class CachedModel(object):
     @classmethod
     def init(cls):
         if not cls.model:
-            modelFileName = cls.modelFileFormat.format(cls.lang)
+            path = os.path.abspath(__file__)
+            dir_path = os.path.dirname(path) + '/'
+            modelFileName = dir_path + cls.modelFileFormat.format(cls.lang)
             with open(modelFileName, 'rb') as modelFile:
                 cls.model = cPickle.load(modelFile)
                 cls.loadedLang = cls.lang

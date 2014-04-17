@@ -1,5 +1,6 @@
 import memcache
 import pickle
+import os
 
 
 class MemcachedNamesCollection(object):
@@ -52,7 +53,9 @@ class MemcachedNamesCollection(object):
         # will produce something like this: 
         # {'kamil': {'tr': 'm'}, 'mustafa': {'en': 'm', 'tr': 'm'}, 'kim': {'sk': 'm', 'nl': 'f'}}
         items = {}
-        for i in open(cls.collectionSourceFile):
+        path = os.path.abspath(__file__)
+        dir_path = os.path.dirname(path) + '/'
+        for i in open(dir_path + '/' + cls.collectionSourceFile):
             
             item = i.strip().split(',')
             firstName = item[0].lower()

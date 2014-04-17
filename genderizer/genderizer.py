@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from __future__ import division
-import cPickle
 import math
 
 from naiveBayesClassifier import tokenizer
@@ -13,7 +12,7 @@ from mongoNamesCollection import MongoNamesCollection
 from cachedModel import CachedModel
 
 
-class Genderize(object):
+class Genderizer(object):
     """ @TODO: write docstring for Genderize"""
     
     initialized = False
@@ -103,32 +102,3 @@ class Genderize(object):
                     return 'female'
                 else:
                     return 'male'
-
-MongoNamesCollection.mongodbURL = 'mongodb://192.168.1.170'
-Genderize.init(
-    lang='tr',
-    namesCollection=MongoNamesCollection
-)
-
-MemcachedNamesCollection.memcacheHost = '127.0.0.1:11211'
-Genderize.init(
-    lang='tr',
-    namesCollection=MemcachedNamesCollection
-)
-
-Genderize.init(
-    lang='tr',
-    namesCollection=NamesCollection,
-    classifier=Classifier(CachedModel.get('tr'), tokenizer)
-)
-
-found = Genderize.detect(
-    firstName = 'fikret',
-    text='annem')
-
-print Genderize.detect(text='askerlik yoklamasını kaçırdım mk')
-print Genderize.detect(text='bana çiçek alan erkek için canım feda')
-print Genderize.detect(firstName = 'John')
-# >>> male
-
-print Genderize.detect(firstName = 'Marry')
