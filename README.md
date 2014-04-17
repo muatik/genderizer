@@ -76,12 +76,16 @@ TODO: give a few examples
 ## Customization and Optimization
 TODO: Tell what options are there and when to choose
 ```python
+from genderizer.memcachedNamesCollection import MemcachedNamesCollection
+from genderizer.mongoNamesCollection import MongoNamesCollection
+
 MongoNamesCollection.mongodbURL = 'mongodb://192.168.1.170'
 Genderizer.init(
     lang='tr',
     namesCollection=MongoNamesCollection
 )
 
+#For memcached, you need to setup a memcached server.
 MemcachedNamesCollection.memcacheHost = '127.0.0.1:11211'
 Genderizer.init(
     lang='tr',

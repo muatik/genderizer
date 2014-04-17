@@ -7,8 +7,6 @@ from naiveBayesClassifier.trainer import Trainer
 from naiveBayesClassifier.classifier import Classifier
 
 from namesCollection import NamesCollection
-from memcachedNamesCollection import MemcachedNamesCollection
-from mongoNamesCollection import MongoNamesCollection
 from cachedModel import CachedModel
 
 
