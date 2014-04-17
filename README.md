@@ -60,7 +60,9 @@ print Genderizer.detect(text='lan bi siktir git')
 # >>> male
 
 ```
-***Note***: You may claim that women can say ```lan bi siktir git```, of course. But the probability of being female is less than the probability of being male according the trained data of the classifier.
+***Note***: You may claim that women can say ```lan bi siktir git```, of course. But the probability of being female is less than the probability of being male according to the trained data of the classifier.
+
+So it is obvious that the success of detection depends on the trained data.
 
 By the way, in Turkish saying 'lan bi siktir git' makes you quite rude.
 
