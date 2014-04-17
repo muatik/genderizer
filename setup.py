@@ -7,7 +7,7 @@ except ImportError:
 
 
 setup(name='genderizer',
-      version='0.1.2.2',
+      version='0.1.2.3',
       license='MIT',
       description='Genderizer tries to infer gender information looking at first name and/or making text analysis',
       long_description=open('README.md').read(),
