@@ -96,7 +96,9 @@ approach. One of the best way of this approach is to use memcached.
 For more information have a look at the documentation of memcached.
 
 Genderizer provides a memcached interface to store first names in 
-memory. To active this interface, you need to instantiate memcachedNamesCollection interface and pass it to genderizer while initializing it.
+memory. To active this interface, you need to instantiate 
+memcachedNamesCollection interface and pass it to genderizer while 
+initializing it.
 """
 
 from genderizer.memcachedNamesCollection import MemcachedNamesCollection
@@ -129,7 +131,8 @@ print Genderizer.detect(firstName = 'Marry')
 ### Custom Text Classifier
 ```python
 """
-NaiveBayesClassifier is adopted as the default classifier. But you can use another, entirely different classifier; as long as the
+NaiveBayesClassifier is adopted as the default classifier. But you
+can use another, entirely different classifier; as long as the
 classifier has a 'classify' method taking text as a parameter.
 
 For more information please have a look at the naiveBayesClassifier
