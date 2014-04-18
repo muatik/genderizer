@@ -83,33 +83,72 @@ TODO: write a step by step guide
 TODO: give a few examples
 
 ## Customization and Optimization
-TODO: Tell what options are there and when to choose
+
+### Using Memcached For Speed
 ```python
+"""
+Under heavy usage, for example tens of thousands detection request
+in a few seconds the default configuration could not meet the
+demand. By the default configurations, genderize will load necessary
+data from files and this is well known to be slow. Instead of each
+time loading data into memory, doing this one time will be clever
+approach. One of the best way of this approach is to use memcached.
+For more information have a look at the documentation of memcached.
+
+Genderizer provides a memcached interface to store first names in 
+memory. To active this interface, you need to instantiate memcachedNamesCollection interface and pass it to genderizer while initializing it.
+"""
+
 from genderizer.memcachedNamesCollection import MemcachedNamesCollection
+
+#For memcached, do not forget to setup the memcached server.
+MemcachedNamesCollection.memcacheHost = '127.0.0.1:11211'
+Genderizer.init(
+    namesCollection=MemcachedNamesCollection
+)
+print Genderizer.detect(firstName = 'John')
+```
+
+### Using Mongodb
+```python
+"""
+If you want to use Genderize on Mongodb for arbitrary reasons, the
+MongoNamesCollection first names collection interface will do much
+of the necessary works for you.
+"""
 from genderizer.mongoNamesCollection import MongoNamesCollection
 
 MongoNamesCollection.mongodbURL = 'mongodb://192.168.1.170'
 Genderizer.init(
-    lang='tr',
     namesCollection=MongoNamesCollection
 )
-
-#For memcached, you need to setup a memcached server.
-MemcachedNamesCollection.memcacheHost = '127.0.0.1:11211'
-Genderizer.init(
-    lang='tr',
-    namesCollection=MemcachedNamesCollection
-)
-
-Genderizer.init(
-    lang='tr',
-    namesCollection=NamesCollection,
-    classifier=Classifier(CachedModel.get('tr'), tokenizer)
-)
-
-print Genderizer.detect(firstName = 'fikret', text='annem')
+print Genderizer.detect(firstName = 'Marry')
 
 ```
+
+### Custom Text Classifier
+```python
+"""
+NaiveBayesClassifier is adopted as the default classifier. But you can use another, entirely different classifier; as long as the
+classifier has a 'classify' method taking text as a parameter.
+
+For more information please have a look at the naiveBayesClassifier
+project's documentation.
+https://github.com/muatik/naive-bayes-classifier
+"""
+
+from naiveBayesClassifier import tokenizer
+from naiveBayesClassifier.classifier import Classifier
+from cachedModel import CachedModel
+
+Genderizer.init(
+    lang='en',
+    classifier=Classifier(CachedModel.get('en'), tokenizer)
+)
+
+print Genderizer.detect(firstName = 'fikret', text='annemle kahve keyfi')
+```
+
 
 ## TODO
 * inline docs
